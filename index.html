@@ -167,6 +167,7 @@ h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -.8px; line-height: 1.1;
 
 .faq { display: grid; gap: 10px; max-width: 760px; }
 details { padding: 0; border-radius: 20px; }
+[data-go] { cursor: pointer; }
 summary { list-style: none; cursor: pointer; padding: 18px 20px; font-weight: 700; display: flex; justify-content: space-between; gap: 12px; }
 summary::-webkit-details-marker { display: none; }
 summary::after { content: "+"; color: var(--accent); font-weight: 800; font-size: 20px; line-height: 1; }
@@ -209,7 +210,7 @@ footer a:hover { color: var(--text); }
       <a class="link" href="#features">Features</a>
       <a class="link" href="#install">Install</a>
       <a class="link" href="#faq">FAQ</a>
-      <a class="btn small" href="https://github.com/yahiaslimani/animebay-releases/releases/latest/download/AnimeBay-arm64-v8a.apk">Download</a>
+      <a class="btn small" data-go="a" role="button" tabindex="0">Download</a>
     </nav>
   </div>
 </header>
@@ -221,7 +222,7 @@ footer a:hover { color: var(--text); }
       <h1>New episodes, <em>the moment they're out.</em></h1>
       <p class="lead">Tap and it plays. Quality adapts to your connection so the video never stops, and your AniList lists come along.</p>
       <div class="cta">
-        <a class="btn" href="https://github.com/yahiaslimani/animebay-releases/releases/latest/download/AnimeBay-arm64-v8a.apk">
+        <a class="btn" data-go="a" role="button" tabindex="0">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
           Download for Android
         </a>
@@ -319,7 +320,7 @@ footer a:hover { color: var(--text); }
       <div class="faq">
         <details class="glass"><summary>Is it free?</summary><p>Yes. AnimeBay is free and has no ads.</p></details>
         <details class="glass"><summary>Do I need an account?</summary><p>No. You can keep your list on your phone. Connecting AniList is optional and brings your lists and progress, and every episode you finish is saved there.</p></details>
-        <details class="glass"><summary>Which phones does it work on?</summary><p>Android 8 or newer. The download button gets the version for almost every phone from the last ten years. If it doesn't install, try the <a href="https://github.com/yahiaslimani/animebay-releases/releases/latest/download/AnimeBay-armeabi-v7a.apk">file for older 32-bit phones</a>.</p></details>
+        <details class="glass"><summary>Which phones does it work on?</summary><p>Android 8 or newer. The download button gets the version for almost every phone from the last ten years. If it doesn't install, try the <a data-go="b" role="button" tabindex="0">file for older 32-bit phones</a>.</p></details>
         <details class="glass"><summary>How do updates work?</summary><p>AnimeBay downloads new versions in the background and pauses while you watch. On Android 12 and newer it installs when you leave the app; on older Android, tap <b>Update ready · Install</b> in More.</p></details>
         <details class="glass"><summary>What about my privacy?</summary><p>AnimeBay has no account of its own. Crash reports are off unless you turn them on in More; they're anonymous and help fix problems faster.</p></details>
       </div>
@@ -333,7 +334,7 @@ footer a:hover { color: var(--text); }
         <h2>Ready when you are</h2>
         <p class="sub" style="margin-inline:auto">One download, and AnimeBay keeps itself up to date.</p>
         <div class="cta">
-          <a class="btn" href="https://github.com/yahiaslimani/animebay-releases/releases/latest/download/AnimeBay-arm64-v8a.apk">
+          <a class="btn" data-go="a" role="button" tabindex="0">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></svg>
             Download for Android
           </a>
@@ -346,14 +347,31 @@ footer a:hover { color: var(--text); }
 <footer>
   <div class="wrap">
     <span>© <span id="year">2026</span> AnimeBay · Not affiliated with AniList</span>
-    <span><a href="https://github.com/yahiaslimani/animebay-releases/releases">All versions and what's new</a></span>
+    <span><a data-go="c" role="button" tabindex="0">All versions and what's new</a></span>
   </div>
 </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  // The current version, read from the releases repo.
-  fetch('https://api.github.com/repos/yahiaslimani/animebay-releases/releases/latest')
+  // Addresses are kept encoded so they aren't shown on hover or in the page.
+  var L = {
+    a: 'a3BhLmE4di00Nm1yYS15YUJlbWluQS9kYW9sbndvZC90c2V0YWwvc2VzYWVsZXIvc2VzYWVsZXIteWFiZW1pbmEvaW5hbWlsc2FpaGF5L21vYy5idWh0aWcvLzpzcHR0aA==',
+    b: 'a3BhLmE3di1pYmFlbXJhLXlhQmVtaW5BL2Rhb2xud29kL3RzZXRhbC9zZXNhZWxlci9zZXNhZWxlci15YWJlbWluYS9pbmFtaWxzYWloYXkvbW9jLmJ1aHRpZy8vOnNwdHRo',
+    c: 'c2VzYWVsZXIvc2VzYWVsZXIteWFiZW1pbmEvaW5hbWlsc2FpaGF5L21vYy5idWh0aWcvLzpzcHR0aA==',
+    v: 'dHNldGFsL3Nlc2FlbGVyL3Nlc2FlbGVyLXlhYmVtaW5hL2luYW1pbHNhaWhheS9zb3Blci9tb2MuYnVodGlnLmlwYS8vOnNwdHRo'
+  };
+  function u(k) { return atob(L[k]).split('').reverse().join(''); }
+  function go(e) {
+    var k = e.currentTarget.getAttribute('data-go');
+    e.preventDefault();
+    window.location.href = u(k);
+  }
+  document.querySelectorAll('[data-go]').forEach(function (el) {
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') go(e); });
+  });
+  // The current version.
+  fetch(u('v'))
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       if (d && d.tag_name) document.getElementById('version').textContent = 'Version ' + d.tag_name.replace(/^v/, '');
